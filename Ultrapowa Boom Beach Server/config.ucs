@@ -14,7 +14,7 @@
       <!-- Specify where to redirect if the CoC version is outdated -->
   <add key="useCustomPatch" value="false" />
       <!-- Specify if the server is using patches (.csv, .sc, ...) -->
-  <add key="patchingServer" value="" />
+  <add key="PatchURL" value="" />
       <!-- Don't forget the trailing slash -->
   <add key="MaintenanceTimeLeft" value="0" />
       <!-- Please set the time in seconds like 1200 seconds for 20 minutes -->

@@ -104,6 +104,17 @@ namespace UCS.Packets.Messages.Client
                 return;
             }
 
+            if (UsePatch && this.MasterHash != ObjectManager.FingerPrint.sha)
+            {
+                new Authentication_Failed(this.Device)
+                {
+                    ErrorCode = 7,
+                    ContentUrl = PatchURL,
+                    ResourceFingerprintData = ObjectManager.FingerPrint.SaveToJson()
+                }.Send();
+                return;
+            }
+
             this.CheckClient();
         }
 

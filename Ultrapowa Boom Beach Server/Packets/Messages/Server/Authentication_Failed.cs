@@ -26,6 +26,13 @@ namespace UCS.Packets.Messages.Server
             this.Identifier = 20103;
             this.UpdateURL = ConfigurationManager.AppSettings["UpdateUrl"];
             this.Version = 2;
+
+            // 7  = Patch
+            // 8  = Update Available
+            // 10 = Maintenance
+            // 11 = Banned
+            // 12 = Debug Mode failed?
+            // 13 = Acc Locked PopUp
         }
 
         internal override void Encode()
@@ -33,7 +40,7 @@ namespace UCS.Packets.Messages.Server
             this.Data.AddInt(this.ErrorCode);
             this.Data.AddString(this.ResourceFingerprintData); 
             this.Data.AddString(null); 
-            this.Data.AddString(null); 
+            this.Data.AddString(this.ContentUrl); 
             this.Data.AddString(this.UpdateURL);
             this.Data.AddString(this.Reason);
             this.Data.AddInt(this.RemainingTime); 
