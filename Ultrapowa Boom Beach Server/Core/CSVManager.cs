@@ -5,7 +5,6 @@
     using System.IO;
     using System.Net;
     using Newtonsoft.Json.Linq;
-    using SevenZip.SDK.Compress.LZMA;
     using Files.CSV;
     using static Core.Logger;
     using Files;
