@@ -49,7 +49,7 @@
             try
             {
                 var _DownloadString =
-                    "http://b46f744d64acd2191eda-3720c0374d47e9a0dd52be4d281c260f.r11.cf2.rackcdn.com/" +
+                    "http://df70a89d32075567ba62-1e50fe9ed7ef652688e6e5fff773074c.r40.cf1.rackcdn.com/" +
                     ObjectManager.FingerPrint.sha + "/";
                 bool DownloadOnlyCSV;
                 back:
@@ -95,12 +95,14 @@
             }
         }
 
-        public static void DownloadFile(string _Link, string _Sublink, string _Folder, string _FileName,
-            bool HasSubFolder = false, bool IsCSV = false)
+        public static void DownloadFile(string _Link, string _Sublink, string _Folder, string _FileName, bool HasSubFolder = false, bool IsCSV = false)
         {
             try
             {
-                var _FileLink = _Link + _Sublink;
+                string _FileLink = _Link + _Sublink;
+
+                if (!Directory.Exists($"Gamefiles/update/{_Folder}"))
+                    Directory.CreateDirectory($"Gamefiles/update/{_Folder}");
 
                 if (HasSubFolder)
                 {
@@ -108,47 +110,13 @@
                 }
                 else
                 {
-                    if (!Directory.Exists($"Gamefiles/update/compressed/{_Folder}"))
-                        Directory.CreateDirectory($"Gamefiles/update/compressed/{_Folder}");
-
-                    var _WC = new WebClient();
+                    WebClient _WC = new WebClient();
                     Say($"Downloading '{_FileName}'... ", true);
-                    _WC.DownloadFile(new Uri(_FileLink), $"Gamefiles/update/compressed/{_Folder}/{_FileName}");
+                    _WC.DownloadFile(new Uri(_FileLink), $"Gamefiles/update/{_Folder}/{_FileName}");
 
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine("DONE");
                     Console.ResetColor();
-
-                    var _Decoder = new Decoder();
-                    using (var _FS = new FileStream($"Gamefiles/update/compressed/{_Folder}/{_FileName}",
-                        FileMode.Open))
-                    {
-                        if (!Directory.Exists($"Gamefiles/update/decompressed/{_Folder}"))
-                            Directory.CreateDirectory($"Gamefiles/update/decompressed/{_Folder}");
-
-                        if (IsCSV)
-                        {
-                            Say($"Decompressing '{_FileName}'... ", true);
-                            using (var _Stream = new FileStream($"Gamefiles/update/decompressed/{_Folder}/{_FileName}",
-                                FileMode.Create))
-                            {
-                                var numArray = new byte[5];
-                                _FS.Read(numArray, 0, 5);
-                                var buffer = new byte[4];
-                                _FS.Read(buffer, 0, 4);
-                                var int32 = BitConverter.ToInt32(buffer, 0);
-                                _Decoder.SetDecoderProperties(numArray);
-                                _Decoder.Code(_FS, _Stream, _FS.Length, int32, null);
-                                _Stream.Flush();
-                                _Stream.Close();
-                            }
-                            _FS.Close();
-
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine("DONE");
-                            Console.ResetColor();
-                        }
-                    }
                 }
             }
             catch (Exception e)

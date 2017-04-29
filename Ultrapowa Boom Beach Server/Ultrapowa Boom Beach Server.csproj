@@ -59,7 +59,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <PostSharpRuntimeVerificationEnabled>True</PostSharpRuntimeVerificationEnabled>
     <PostSharpConstraintVerificationEnabled>True</PostSharpConstraintVerificationEnabled>
-    <LangVersion>6</LangVersion>
+    <LangVersion>7</LangVersion>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <FileAlignment>1024</FileAlignment>
     <DocumentationFile>
@@ -113,7 +113,7 @@
     <Prefer32Bit>true</Prefer32Bit>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <WarningLevel>0</WarningLevel>
-    <LangVersion>6</LangVersion>
+    <LangVersion>7</LangVersion>
     <FileAlignment>1024</FileAlignment>
   </PropertyGroup>
   <PropertyGroup />
