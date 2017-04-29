@@ -1,9 +1,8 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultrapowa Boom Beach Server", "Ultrapowa Clash Server\Ultrapowa Boom Beach Server.csproj", "{0E72C402-09B2-4545-AAEB-6AB58971D2FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ultrapowa Boom Beach Server", "Ultrapowa Boom Beach Server\Ultrapowa Boom Beach Server.csproj", "{0E72C402-09B2-4545-AAEB-6AB58971D2FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
