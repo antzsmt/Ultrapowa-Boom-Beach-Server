@@ -11,18 +11,19 @@
 
     internal class Loader
     {
-        internal API API;
-        internal CommandFactory CommandFactory;
-        internal CSVManager Csv;
-        internal DirectoryChecker DirectoryChecker;
-        internal EventsHandler Events;
-        internal Logger Logger;
-        internal MemoryThread MemThread;
-        internal MessageFactory MessageFactory;
-        internal ObjectManager ObjectManager;
-        internal ParserThread Parser;
-        internal Redis Redis;
-        internal ResourcesManager ResourcesManager;
+        internal API API                           = null;
+        internal CommandFactory CommandFactory     = null;
+        internal CSVManager Csv                    = null;
+        internal DirectoryChecker DirectoryChecker = null;
+        internal EventsHandler Events              = null;
+        internal Logger Logger                     = null;
+        internal MemoryThread MemThread            = null;
+        internal MessageFactory MessageFactory     = null;
+        internal ObjectManager ObjectManager       = null;
+        internal ParserThread Parser               = null;
+        internal Redis Redis                       = null;
+        internal ResourcesManager ResourcesManager = null;
+        internal Settings.Settings Settings        = null;
 
         public Loader()
         {
@@ -30,6 +31,7 @@
             Logger = new Logger();
             DirectoryChecker = new DirectoryChecker();
             Csv = new CSVManager();
+            Settings = new Settings.Settings();
 
             if (Utils.ParseConfigBoolean("UseWebAPI"))
                 API = new API();
@@ -41,9 +43,7 @@
             if (Constants.UseCacheServer)
                 Redis = new Redis();
 
-
             CommandFactory = new CommandFactory();
-
             MessageFactory = new MessageFactory();
 
             // Optimazions

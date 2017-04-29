@@ -10,6 +10,9 @@ namespace UCS.Packets.Messages.Client
     using Packets.Messages.Server;
     using Utilities.Blake2B;
     using Utilities.Sodium;
+    using System.Configuration;
+    using System;
+    using static Core.Settings.Settings;
 
     // Packet 10101
     internal class Authentication : Message
@@ -17,7 +20,6 @@ namespace UCS.Packets.Messages.Client
         public string AdvertisingGUID;
         public bool Android;
         public string AndroidDeviceID;
-        public string ClientVersion;
         public int ContentVersion;
         public string DeviceModel;
         public string FacebookDistributionID;
@@ -73,15 +75,35 @@ namespace UCS.Packets.Messages.Client
             this.UDID = Reader.ReadString();
             this.OpenUDID = Reader.ReadString();
             this.DeviceModel = Reader.ReadString();
-            Reader.ReadString();
+            this.Reader.ReadString();
             this.Region = Reader.ReadString();
             this.AdvertisingGUID = Reader.ReadString();
             this.OSVersion = Reader.ReadString();
-            Reader.ReadString();
+            this.Reader.ReadString();
         }
 
         internal override void Process()
         {
+            if (MaintenanceTimeLeft != 0)
+            {
+                new Authentication_Failed(this.Device)
+                {
+                    ErrorCode = 10,
+                    RemainingTime = MaintenanceTimeLeft
+                }.Send();
+                return;
+            }
+
+            if (ClientVersion != $"{this.MajorVersion}.{this.MinorVersion}")
+            {
+                new Authentication_Failed(this.Device)
+                {
+                    ErrorCode = 8,
+                    UpdateURL = UpdateURL
+                }.Send();
+                return;
+            }
+
             this.CheckClient();
         }
 

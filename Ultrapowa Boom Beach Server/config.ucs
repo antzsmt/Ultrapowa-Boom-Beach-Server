@@ -16,7 +16,7 @@
       <!-- Specify if the server is using patches (.csv, .sc, ...) -->
   <add key="patchingServer" value="" />
       <!-- Don't forget the trailing slash -->
-  <add key="maintenanceTimeleft" value="0" />
+  <add key="MaintenanceTimeLeft" value="0" />
       <!-- Please set the time in seconds like 1200 seconds for 20 minutes -->
  <add key="ClientVersion" value="30.125"/>
       <!-- Required Client Version to connect -->

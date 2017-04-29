@@ -229,6 +229,7 @@
     <Compile Include="Core\Network\TCP\Gateway.cs" />
     <Compile Include="Core\Network\TCP\SocketAsyncEventArgsPool.cs" />
     <Compile Include="Core\Network\TCP\Token.cs" />
+    <Compile Include="Core\Settings\Settings.cs" />
     <Compile Include="Database\Clan.cs">
       <DependentUpon>ucsdb.tt</DependentUpon>
     </Compile>

@@ -15,28 +15,28 @@ namespace UCS.Packets.Messages.Server
         internal string ContentUrl;
 
         internal int ErrorCode;
-        internal string Reason;
-        internal string RedirectDomain;
         internal int RemainingTime;
+        internal string Reason;
+        internal string RedirectDomain;       
         internal string ResourceFingerprintData;
-        internal string UpdateUrl;
+        internal string UpdateURL;
 
         public Authentication_Failed(Device client) : base(client)
         {
             this.Identifier = 20103;
-            this.UpdateUrl = ConfigurationManager.AppSettings["UpdateUrl"];
+            this.UpdateURL = ConfigurationManager.AppSettings["UpdateUrl"];
             this.Version = 2;
         }
 
         internal override void Encode()
         {
             this.Data.AddInt(this.ErrorCode);
-            this.Data.AddString(null);
-            this.Data.AddString(null);
-            this.Data.AddString(null);
-            this.Data.AddString(null);
-            this.Data.AddString("Clash of Lights Developement");
-            this.Data.AddInt(0);
+            this.Data.AddString(this.ResourceFingerprintData); 
+            this.Data.AddString(null); 
+            this.Data.AddString(null); 
+            this.Data.AddString(this.UpdateURL);
+            this.Data.AddString(this.Reason);
+            this.Data.AddInt(this.RemainingTime); 
         }
 
         internal override void Encrypt()

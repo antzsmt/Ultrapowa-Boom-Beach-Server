@@ -72,7 +72,7 @@ namespace UCS
             Console.ResetColor();
             Logger.WriteCenter("|This program is made by the Ultrapowa Development Team.|");
             Logger.WriteCenter("|    Ultrapowa is not affiliated to \"Supercell, Oy\".    |");
-            Logger.WriteCenter("|        This program is copyrighted worldwide.         |");
+            Logger.WriteCenter("|        This is licensed under the MIT License.        |");
             Logger.WriteCenter("|   Visit www.ultrapowa.com daily for News & Updates!   |");
             Console.ForegroundColor = ConsoleColor.Green;
             Logger.WriteCenter("+-------------------------------------------------------+");
