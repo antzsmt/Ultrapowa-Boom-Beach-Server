@@ -13,6 +13,10 @@ UBS (Ultrapowa Boom Beach Server) is an inofficial and incomplete Emulator for B
 
 * [ Boom Beach | 30.125 ](https://mega.nz/#!YgMAVASL!PRL4Q64XtOVZRazkjKLKL3SlodJLBaox6bR_GFFVSwo)
 
+If you want to patch the Apk by your own you need the public key which you can find here <https://clashoflights.xyz/games/boombeach/Keys.txt>
+
+Boom Beach Host: game.boombeachgame.com
+
 ## Help & Support
 
 You need help or have a problem? Join our Discord Server to get help <https://discord.gg/E8QgpFW>
